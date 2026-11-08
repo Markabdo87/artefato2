@@ -1,0 +1,11 @@
+sprint,itens_inicio_sprint,itens_adicionados,itens_concluidos,itens_fim_sprint,velocity_pontos,impedimentos_abertos,impedimentos_resolvidos,tarefas_com_mudanca_escopo,tarefas_com_retrabalho
+1,14,0,8,6,28,1,1,0,0
+2,14,0,8,6,30,2,1,0,0
+3,14,1,8,7,32,3,2,1,1
+4,13,1,8,6,29,3,2,0,1
+5,14,2,8,8,27,5,3,2,1
+6,16,4,8,12,26,8,4,4,2
+7,18,5,8,15,24,10,5,5,2
+8,21,6,8,19,22,13,6,5,4
+9,24,5,7,22,20,14,7,4,3
+10,25,4,3,26,12,12,4,4,2

@@ -1,0 +1,7 @@
+membro,papel,senioridade,especialidade,horas_semana_disponiveis,sprint_1_utilizacao,sprint_2_utilizacao,sprint_3_utilizacao,sprint_4_utilizacao,sprint_5_utilizacao,sprint_6_utilizacao,sprint_7_utilizacao,sprint_8_utilizacao,sprint_9_utilizacao,sprint_10_utilizacao,custo_hora
+Ana,Tech Lead,Senior,Integracoes e Arquitetura,40,75%,85%,90%,95%,100%,115%,120%,130%,128%,125%,180
+Bruno,Dev Backend,Senior,Infraestrutura e Backend,40,60%,70%,70%,75%,72%,68%,80%,82%,78%,75%,160
+Carla,Dev Frontend,Plena,Frontend e UX,40,65%,70%,72%,68%,78%,80%,82%,85%,80%,78%,120
+Diego,Analista de Dados,Pleno,Migracao e Banco de Dados,40,70%,68%,82%,85%,90%,95%,100%,110%,108%,105%,140
+Elena,QA,Plena,Testes e Qualidade,40,50%,55%,65%,72%,75%,85%,88%,95%,92%,70%,130
+Felipe,PM / Scrum Master,Senior,Gestao e Facilitacao,40,60%,60%,65%,65%,70%,75%,80%,85%,88%,90%,170
