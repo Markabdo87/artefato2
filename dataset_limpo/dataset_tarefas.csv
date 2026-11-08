@@ -1,0 +1,121 @@
+task_id,titulo,tipo,responsavel,sprint,story_points,data_inicio_prevista,data_fim_prevista,data_inicio_real,data_fim_real,status,dependencias,impedimentos,mudanca_escopo,retrabalho,horas_estimadas,horas_gastas,prioridade,custo_estimado,custo_real
+TASK-001,Configurar ambiente cloud AWS,Infraestrutura,Bruno,1,3,2024-09-02,2024-09-04,2024-09-02,2024-09-04,Done,,0,Nao,Nao,12,10,Alta,1920,1600
+TASK-002,Definir arquitetura de migração,Feature,Ana,1,8,2024-09-02,2024-09-06,2024-09-02,2024-09-06,Done,,0,Nao,Nao,32,30,Critica,5760,5400
+TASK-003,Criar repositório e CI/CD,Infraestrutura,Bruno,1,3,2024-09-04,2024-09-06,2024-09-05,2024-09-06,Done,TASK-001,0,Nao,Nao,12,14,Alta,1920,2240
+TASK-004,Mapear tabelas do ERP legado,Feature,Diego,1,5,2024-09-02,2024-09-05,2024-09-02,2024-09-05,Done,,0,Nao,Nao,20,18,Critica,2800,2520
+TASK-005,Documentar APIs existentes,Feature,Carla,1,3,2024-09-03,2024-09-05,2024-09-03,2024-09-06,Done,,0,Nao,Nao,12,15,Media,1440,1800
+TASK-006,Setup ambiente de testes,Infraestrutura,Elena,1,2,2024-09-04,2024-09-05,2024-09-04,2024-09-05,Done,,0,Nao,Nao,8,8,Alta,1040,1040
+TASK-007,Plano de rollback,Feature,Ana,1,3,2024-09-05,2024-09-06,2024-09-05,2024-09-09,Done,,1,Nao,Nao,12,16,Alta,2160,2880
+TASK-008,Script migração tabela Clientes,Feature,Diego,1,5,2024-09-05,2024-09-09,2024-09-05,2024-09-09,Done,TASK-004,0,Nao,Nao,20,22,Critica,2800,3080
+TASK-009,Tela de login novo sistema,Feature,Carla,2,3,2024-09-09,2024-09-11,2024-09-09,2024-09-11,Done,,0,Nao,Nao,12,8,Media,1440,960
+TASK-010,Integração SSO Active Directory,Feature,Ana,2,8,2024-09-09,2024-09-13,2024-09-09,2024-09-13,Done,,0,Nao,Nao,32,35,Critica,5760,6300
+TASK-011,Script migração tabela Produtos,Feature,Diego,2,5,2024-09-09,2024-09-12,2024-09-09,2024-09-12,Done,TASK-004,0,Nao,Nao,20,19,Alta,2800,2660
+TASK-012,Testes unitários módulo auth,Tech Debt,Elena,2,3,2024-09-11,2024-09-13,2024-09-11,2024-09-13,Done,TASK-010,0,Nao,Nao,12,12,Media,1560,1560
+TASK-013,Corrigir encoding tabela Clientes,Bug,Diego,2,2,2024-09-12,2024-09-13,2024-09-12,2024-09-13,Done,TASK-008,0,Nao,Nao,8,7,Alta,1120,980
+TASK-014,Dashboard gerencial v1,Feature,Carla,2,5,2024-09-10,2024-09-13,2024-09-10,2024-09-16,Done,,1,Nao,Nao,20,26,Media,2400,3120
+TASK-015,Configurar monitoring Datadog,Infraestrutura,Bruno,2,3,2024-09-10,2024-09-12,2024-09-08,2024-09-12,Done,,0,Nao,Nao,12,11,Media,1920,1760
+TASK-016,Revisão segurança IAM policies,Tech Debt,Ana,2,5,2024-09-12,2024-09-16,2024-09-13,2024-09-17,Done,,0,Nao,Nao,20,24,Alta,3600,4320
+TASK-017,API Gateway configuração,Infraestrutura,Bruno,3,5,2024-09-16,2024-09-19,2024-09-16,2024-09-19,Done,,0,Nao,Nao,20,16,Alta,3200,2560
+TASK-018,Migração tabela Pedidos,Feature,Diego,3,8,2024-09-16,2024-09-20,2024-09-16,2024-09-23,Done,TASK-004;TASK-008,1,Nao,Nao,32,40,Critica,4480,5600
+TASK-019,Integração módulo financeiro,Feature,Ana,3,13,2024-09-16,2024-09-24,2024-09-16,2024-09-25,Done,TASK-010;TASK-004,1,Nao,Nao,52,58,Critica,9360,10440
+TASK-020,Tela de pedidos novo sistema,Feature,Carla,3,5,2024-09-18,2024-09-20,2024-09-18,2024-09-20,Done,TASK-018,0,Nao,Nao,20,19,Alta,2400,2280
+TASK-021,Testes integração SSO,Tech Debt,Elena,3,3,2024-09-18,2024-09-20,2024-09-19,2024-09-23,Done,TASK-010,1,Nao,Sim,12,18,Alta,1560,2340
+TASK-022,Correção timeout API Clientes,Bug,Bruno,3,3,2024-09-19,2024-09-20,2024-09-19,2024-09-20,Done,,0,Nao,Nao,12,10,Alta,1920,1600
+TASK-023,Documentação técnica v1,Tech Debt,Carla,3,3,2024-09-20,2024-09-23,2024-09-20,2024-09-23,Done,,,Nao,Nao,12,13,Baixa,1440,1560
+TASK-024,Performance tuning queries,Tech Debt,Diego,3,5,2024-09-20,2024-09-24,2024-09-23,2024-09-27,Done,TASK-018,1,Nao,Nao,20,28,Media,2800,3920
+TASK-025,Migração tabela Fornecedores,Feature,Diego,4,5,2024-09-30,2024-10-03,2024-09-30,2024-10-03,Done,TASK-004,0,Nao,Nao,20,24,Alta,2800,3360
+TASK-026,Integração módulo estoque,Feature,Ana,4,13,2024-09-30,2024-10-08,2024-09-30,2024-10-09,Done,TASK-019;TASK-025,1,Nao,Nao,52,56,Critica,9360,10080
+TASK-027,Tela de fornecedores,Feature,Carla,4,3,2024-10-02,2024-10-04,2024-10-02,2024-10-04,Done,TASK-025,0,Nao,Nao,12,11,Media,1440,1320
+TASK-028,Testes carga banco novo,Tech Debt,Elena,4,5,2024-10-01,2024-10-04,2024-10-01,2024-10-07,Done,,1,Nao,Nao,20,25,Alta,2600,3250
+TASK-029,Corrigir duplicação registros migração,Bug,Diego,4,3,2024-10-03,2024-10-04,2024-10-03,2024-10-07,Done,TASK-018,1,Nao,Sim,12,20,Critica,1680,2800
+TASK-030,Script rollback automático,Infraestrutura,Bruno,4,5,2024-10-01,2024-10-04,2024-10-01,2024-10-04,Done,,0,Nao,Nao,20,16,Alta,3200,2560
+TASK-031,Refatorar camada de cache,Tech Debt,Bruno,4,5,2024-10-04,2024-10-08,2024-10-04,2024-10-09,Done,,0,Nao,Nao,20,,Media,3200,
+TASK-032,Revisão logs de auditoria,Tech Debt,Ana,4,3,2024-10-07,2024-10-09,2024-10-08,2024-10-10,Done,,0,Nao,Nao,12,14,Media,2160,2520
+TASK-033,Migração tabela Fiscal,Feature,Diego,5,8,2024-10-14,2024-10-18,2024-10-14,2024-10-21,Done,TASK-004;TASK-025,1,Nao,Nao,32,38,Critica,4480,5320
+TASK-034,Integração NF-e SEFAZ,Feature,Ana,5,13,2024-10-14,2024-10-22,2024-10-14,2024-10-24,Done,TASK-033;TASK-019,2,Sim,Nao,52,64,Critica,9360,11520
+TASK-035,Dashboard gerencial v2,Feature,Carla,5,5,2024-10-16,2024-10-18,2024-10-16,2024-10-21,Done,TASK-014,1,Sim,Nao,20,28,Media,2400,3360
+TASK-036,Testes regressão módulo financeiro,Tech Debt,Elena,5,5,2024-10-17,2024-10-21,2024-10-18,2024-10-23,Done,TASK-019,1,Nao,Sim,20,26,Alta,2600,3380
+TASK-037,Corrigir cálculo ICMS migração,Bug,Diego,5,3,2024-10-18,2024-10-21,2024-10-21,2024-10-24,Done,TASK-033,2,Nao,Nao,12,18,Critica,1680,2520
+TASK-038,Otimização índices banco produção,Tech Debt,Bruno,5,3,2024-10-17,2024-10-18,2024-10-17,2024-10-18,Done,,,Nao,Nao,12,10,Media,1920,1600
+TASK-039,Configurar backup automático,Infraestrutura,Bruno,5,3,2024-10-18,2024-10-21,2024-10-18,2024-10-21,Done,,0,Nao,Nao,12,12,Alta,1920,1920
+TASK-040,Documentação API v2,Tech Debt,Carla,5,2,2024-10-21,2024-10-22,,2024-10-22,Done,,0,Nao,Nao,8,8,Baixa,960,960
+TASK-041,Migração tabela Contábil,Feature,Diego,6,8,2024-10-28,2024-11-01,2024-10-28,2024-11-05,Done,TASK-033;TASK-034,2,Sim,Nao,32,44,Critica,4480,6160
+TASK-042,Integração folha pagamento,Feature,Ana,6,13,2024-10-28,2024-11-05,2024-10-28,2024-11-08,Done,TASK-026;TASK-034,2,Sim,Nao,52,68,Critica,9360,12240
+TASK-043,Tela relatórios contábeis,Feature,Carla,6,5,2024-10-30,2024-11-01,2024-10-30,2024-11-04,Done,TASK-041,1,Sim,Nao,20,28,Alta,2400,3360
+TASK-044,Testes integração NF-e,Tech Debt,Elena,6,5,2024-10-31,2024-11-04,2024-11-01,2024-11-07,Done,TASK-034,2,Nao,Sim,20,30,Alta,2600,3900
+TASK-045,Corrigir arredondamento valores migrados,Bug,Diego,6,3,2024-11-01,2024-11-04,2024-11-04,2024-11-07,Done,TASK-041,2,Nao,Sim,12,20,Critica,1680,2800
+TASK-046,Adicionar campo centro de custo,Feature,Carla,6,3,2024-11-04,2024-11-06,2024-11-04,2024-11-06,Done,,0,Sim,Nao,12,14,Media,1440,1680
+TASK-047,Refatorar validações fiscais,Tech Debt,Ana,6,8,2024-11-04,2024-11-08,2024-11-05,2024-11-12,Done,TASK-034,2,Nao,Sim,32,42,Alta,5760,7560
+TASK-048,Configurar CDN para assets,Infraestrutura,Bruno,6,2,2024-10-28,2024-10-29,2024-10-26,2024-10-29,Done,,0,Nao,Nao,8,7,Baixa,1280,1120
+TASK-049,Migração dados históricos 2020-2023,Feature,Diego,7,13,2024-11-11,2024-11-19,2024-11-11,2024-11-25,Done,TASK-041;TASK-033;TASK-025,3,Sim,Sim,52,72,Critica,7280,10080
+TASK-050,Integração BI corporativo,Feature,Ana,7,13,2024-11-11,2024-11-19,2024-11-12,2024-11-26,Done,TASK-042;TASK-035,3,Sim,Nao,52,70,Critica,9360,12600
+TASK-051,Relatório DRE automático,Feature,Carla,7,8,2024-11-13,2024-11-18,2024-11-14,2024-11-22,Done,TASK-042;TASK-043,2,Sim,Nao,32,40,Alta,3840,4800
+TASK-052,Testes migração dados históricos,Tech Debt,Elena,7,5,2024-11-18,2024-11-20,2024-11-20,2024-11-26,Done,TASK-049,2,Nao,Sim,20,30,Alta,2600,3900
+TASK-053,Corrigir timezone datas migradas,Bug,Diego,7,3,2024-11-15,2024-11-18,2024-11-18,2024-11-22,Done,TASK-049,2,Nao,Nao,12,18,Alta,1680,2520
+TASK-054,Corrigir permissões relatórios,Bug,Bruno,7,2,2024-11-14,2024-11-15,2024-11-14,2024-11-18,Done,TASK-051,1,Nao,Nao,8,12,Media,1280,1920
+TASK-055,Performance tuning relatórios,Tech Debt,Bruno,7,5,2024-11-18,2024-11-20,2024-11-19,2024-11-25,Done,TASK-051,1,Nao,Nao,20,,Media,3200,
+TASK-056,Atualizar documentação migração,Tech Debt,Carla,7,2,2024-11-20,2024-11-21,2024-11-21,2024-11-22,Done,,0,Nao,Nao,8,9,Baixa,960,1080
+TASK-057,Módulo aprovações workflow,Feature,Ana,8,13,2024-11-25,2024-12-03,2024-11-25,2024-12-10,Done,TASK-050;TASK-042;TASK-019,3,Sim,Sim,52,78,Critica,9360,14040
+TASK-058,Migração regras de negócio customizadas,Feature,Diego,8,13,2024-11-25,2024-12-03,2024-11-26,2024-12-11,Done,TASK-049;TASK-041;TASK-033,3,Sim,Sim,52,76,Critica,7280,10640
+TASK-059,Dashboard executivo tempo real,Feature,Carla,8,8,2024-11-27,2024-12-02,2024-11-28,2024-12-06,Done,TASK-050;TASK-051,2,Sim,Nao,32,42,Alta,3840,5040
+TASK-060,Testes regressão completa,Tech Debt,Elena,8,8,2024-12-02,2024-12-06,2024-12-04,2024-12-12,Done,TASK-057;TASK-058,3,Nao,Sim,32,48,Critica,4160,6240
+TASK-061,Corrigir inconsistência saldos migrados,Bug,Diego,8,5,2024-12-03,2024-12-05,2024-12-05,2024-12-11,Done,TASK-058,2,Nao,Sim,20,32,Critica,2800,4480
+TASK-062,Ajuste performance workflow engine,Tech Debt,Bruno,8,5,2024-12-02,2024-12-05,2024-12-03,2024-12-09,Done,TASK-057,2,Nao,Nao,20,28,Alta,3200,4480
+TASK-063,Integração assinatura digital,Feature,Ana,8,8,2024-12-03,2024-12-09,2024-12-05,2024-12-13,Done,TASK-057,2,Sim,Nao,32,44,Alta,5760,7920
+TASK-064,Alertas automáticos SLA,Feature,Bruno,8,3,2024-12-04,2024-12-06,2024-12-04,2024-12-09,Done,TASK-050,1,Nao,Nao,12,16,Media,1920,2560
+TASK-065,Módulo conciliação bancária,Feature,Ana,9,13,2024-12-09,2024-12-17,2024-12-10,,In Progress,TASK-057;TASK-042;TASK-034,3,Sim,Sim,52,74,Critica,9360,13320
+TASK-066,Migração customizações legadas,Feature,Diego,9,13,2024-12-09,2024-12-17,2024-12-11,,In Progress,TASK-058;TASK-049;TASK-041,3,Sim,Sim,52,70,Critica,7280,9800
+TASK-067,Relatório fluxo de caixa,Feature,Carla,9,8,2024-12-11,2024-12-16,2024-12-12,,In Progress,TASK-065;TASK-051,2,Sim,Nao,32,38,Alta,3840,4560
+TASK-068,Testes aceitação usuário (UAT) fase 1,Tech Debt,Elena,9,8,2024-12-16,2024-12-20,2024-12-18,,In Progress,TASK-057;TASK-058;TASK-065,3,Nao,Sim,32,40,Critica,4160,5200
+TASK-069,Corrigir regra rateio custos,Bug,Diego,9,5,2024-12-13,2024-12-16,2024-12-16,2024-12-20,Done,TASK-058,2,Nao,Sim,20,28,Critica,2800,3920
+TASK-070,Hotfix timeout conciliação,Bug,Bruno,9,3,2024-12-16,2024-12-17,2024-12-17,2024-12-19,Done,TASK-065,2,Nao,Nao,12,16,Critica,1920,2560
+TASK-071,Refatorar módulo importação XML,Tech Debt,Ana,9,8,2024-12-12,2024-12-18,2024-12-14,,In Progress,TASK-034;TASK-047,2,Nao,Sim,32,44,Alta,5760,7920
+TASK-072,Otimizar consultas dashboard exec,Tech Debt,Bruno,9,3,2024-12-16,2024-12-18,2024-12-17,2024-12-20,Done,TASK-059,1,Nao,Nao,12,15,Media,1920,2400
+TASK-073,Módulo multi-empresa,Feature,Ana,10,13,2024-12-23,2024-12-31,2024-12-24,,In Progress,TASK-065;TASK-057;TASK-026,3,Sim,Sim,52,62,Critica,9360,11160
+TASK-074,Migração último lote dados prod,Feature,Diego,10,13,2024-12-23,2024-12-31,2024-12-26,,In Progress,TASK-066;TASK-058;TASK-049,3,Sim,Nao,52,48,Critica,7280,6720
+TASK-075,Painel gestão projetos integrado,Feature,Carla,10,8,2024-12-26,2024-12-31,2024-12-27,,In Progress,TASK-059;TASK-067;TASK-050,3,Sim,Nao,32,28,Alta,3840,3360
+TASK-076,UAT fase 2 e homologação,Tech Debt,Elena,10,8,2024-12-30,2025-01-03,,,To Do,TASK-068;TASK-073;TASK-074,0,Nao,Nao,32,0,Critica,4160,0
+TASK-077,Corrigir cálculo provisões,Bug,Diego,10,5,2024-12-27,2024-12-30,2024-12-28,,In Progress,TASK-066,2,Nao,Nao,20,18,Critica,2800,2520
+TASK-078,Plano de cutover final,Feature,Ana,10,5,2024-12-30,2025-01-02,,,To Do,TASK-073;TASK-074;TASK-076,0,Nao,Nao,20,0,Critica,3600,0
+TASK-079,Treinamento usuários finais,Feature,Carla,10,5,2024-12-30,2025-01-03,,,To Do,TASK-073;TASK-075,0,Nao,Nao,20,0,Alta,2400,0
+TASK-080,Go-live e monitoramento,Infraestrutura,Bruno,10,3,2025-01-03,2025-01-06,,,To Do,TASK-076;TASK-078,0,Nao,Nao,12,0,Critica,1920,0
+TASK-081,Adicionar validação CNPJ fornecedores,Feature,Carla,3,2,2024-09-18,2024-09-19,,2024-09-19,Done,,0,Nao,Nao,8,7,Baixa,960,840
+TASK-082,Configurar alerta de disco,Infraestrutura,Bruno,3,1,2024-09-17,2024-09-17,2024-09-17,2024-09-17,Done,,,Nao,Nao,4,3,Baixa,640,480
+TASK-083,Corrigir layout mobile dashboard,Bug,Carla,4,2,2024-10-02,2024-10-03,2024-10-02,2024-10-03,Done,TASK-014,0,Nao,Nao,8,8,Media,960,960
+TASK-084,Script limpeza dados teste,Infraestrutura,Diego,4,2,2024-10-03,2024-10-04,2024-10-03,2024-10-04,Done,,0,Nao,Nao,8,7,Baixa,1120,980
+TASK-085,Revisão code review backlog,Tech Debt,Bruno,5,3,2024-10-16,2024-10-18,2024-10-16,2024-10-18,Done,,0,Nao,Nao,12,,Baixa,1920,
+TASK-086,Configurar SSL certificados,Infraestrutura,Bruno,5,2,2024-10-14,2024-10-15,2024-10-14,2024-10-15,Done,,0,Nao,Nao,8,8,Alta,1280,1280
+TASK-087,Ajuste responsividade tela pedidos,Bug,Carla,5,2,2024-10-17,2024-10-18,2024-10-17,2024-10-21,Done,TASK-020,1,Nao,Nao,8,12,Media,960,1440
+TASK-088,Corrigir sort tabela fornecedores,Bug,Carla,6,1,2024-10-30,2024-10-31,2024-10-30,2024-10-31,Done,,0,Nao,Nao,4,4,Baixa,480,480
+TASK-089,Adicionar filtro por período relatórios,Feature,Carla,6,3,2024-11-04,2024-11-06,2024-11-04,2024-11-07,Done,TASK-043,1,Sim,Nao,12,15,Media,1440,1800
+TASK-090,Migração tabela Contratos,Feature,Diego,7,8,2024-11-13,2024-11-18,2024-11-14,2024-11-22,Done,TASK-025;TASK-041,2,Sim,Nao,32,40,Alta,4480,5600
+TASK-091,Corrigir encoding nomes com acento,Bug,Diego,7,2,2024-11-15,2024-11-18,2024-11-18,2024-11-20,Done,TASK-049,1,Nao,Nao,8,10,Media,1120,1400
+TASK-092,Automação deploy staging,Infraestrutura,Bruno,7,3,2024-11-14,2024-11-15,2024-11-14,2024-11-18,Done,,1,Nao,Nao,12,,Media,1920,
+TASK-093,Integração sistema ponto,Feature,Ana,8,8,2024-11-27,2024-12-02,2024-11-28,2024-12-09,Done,TASK-042;TASK-057,2,Sim,Nao,32,44,Alta,5760,7920
+TASK-094,Corrigir cálculo férias proporcional,Bug,Diego,8,3,2024-12-02,2024-12-04,2024-12-04,2024-12-09,Done,TASK-042,2,Nao,Nao,12,18,Alta,1680,2520
+TASK-095,Testes carga módulo conciliação,Tech Debt,Elena,8,5,2024-12-04,2024-12-06,2024-12-06,2024-12-12,Done,TASK-057,2,Nao,Sim,20,30,Alta,2600,3900
+TASK-096,Ajuste layout relatório DRE,Bug,Carla,8,2,2024-12-03,2024-12-04,2024-12-03,2024-12-05,Done,TASK-051,1,Nao,Nao,8,10,Media,960,1200
+TASK-097,Adicionar export Excel relatórios,Feature,Carla,9,3,2024-12-11,2024-12-13,2024-12-12,2024-12-16,Done,TASK-051;TASK-067,1,Nao,Nao,12,14,Media,1440,1680
+TASK-098,Corrigir inconsistência câmbio USD,Bug,Diego,9,3,2024-12-13,2024-12-16,2024-12-16,2024-12-20,Done,TASK-066,2,Nao,Nao,12,16,Alta,1680,2240
+TASK-099,Automatizar reconciliação diária,Feature,Ana,9,8,2024-12-16,2024-12-20,2024-12-18,,In Progress,TASK-065;TASK-071,3,Sim,Nao,32,30,Alta,5760,5400
+TASK-100,Configurar disaster recovery,Infraestrutura,Bruno,9,5,2024-12-12,2024-12-16,2024-12-12,2024-12-16,Done,,0,Nao,Nao,20,16,Critica,3200,2560
+TASK-101,Testes segurança penetration,Tech Debt,Elena,10,5,2024-12-26,2024-12-30,2024-12-27,,In Progress,TASK-073,1,Nao,Nao,20,14,Alta,2600,1820
+TASK-102,Corrigir race condition aprovações,Bug,Bruno,10,5,2024-12-26,2024-12-30,2024-12-27,,In Progress,TASK-057,2,Nao,Nao,20,16,Critica,3200,2560
+TASK-103,Migração parametrizações fiscais,Feature,Diego,10,8,2024-12-26,2024-12-31,2024-12-28,,In Progress,TASK-066;TASK-041,2,Sim,Nao,32,22,Alta,4480,3080
+TASK-104,Ajuste performance API lote,Tech Debt,Bruno,10,3,2024-12-27,2024-12-30,2024-12-28,,In Progress,TASK-074,1,Nao,Nao,12,8,Media,1920,1280
+TASK-105,Integração e-mail notificações,Feature,Carla,10,3,2024-12-27,2024-12-30,2024-12-28,,In Progress,TASK-057,1,Nao,Nao,12,8,Media,1440,960
+TASK-106,Validação dados migrados final,Tech Debt,Elena,10,8,2025-01-02,2025-01-06,,,To Do,TASK-074;TASK-076,0,Nao,Nao,32,0,Critica,4160,0
+TASK-107,Corrigir cálculo depreciação ativos,Bug,Ana,6,5,2024-11-04,2024-11-07,2024-11-06,2024-11-12,Done,TASK-041;TASK-042,2,Nao,Sim,20,30,Critica,3600,5400
+TASK-108,Cache Redis para consultas freq,Tech Debt,Bruno,6,3,2024-11-05,2024-11-07,2024-11-05,2024-11-07,Done,,0,Nao,Nao,12,11,Media,1920,1760
+TASK-109,Adicionar campo observações pedidos,Feature,Carla,7,2,2024-11-13,2024-11-14,2024-11-13,2024-11-15,Done,TASK-020,0,Sim,Nao,8,10,Baixa,960,1200
+TASK-110,Migração anexos digitalizados,Feature,Diego,8,8,2024-11-28,2024-12-03,2024-11-29,2024-12-09,Done,TASK-049;TASK-058,2,Nao,Sim,32,44,Alta,4480,6160
+TASK-111,Corrigir paginação listagem contratos,Bug,Carla,8,2,2024-11-28,2024-11-29,2024-11-28,2024-12-02,Done,TASK-090,1,Nao,Nao,8,12,Media,960,1440
+TASK-112,Atualizar dependências segurança,Tech Debt,Bruno,9,3,2024-12-12,2024-12-13,2024-12-12,2024-12-13,Done,,0,Nao,Nao,12,10,Alta,1920,1600
+TASK-113,Testes performance migração lote,Tech Debt,Elena,9,5,2024-12-16,2024-12-19,2024-12-18,,In Progress,TASK-066;TASK-074,2,Nao,Nao,20,22,Alta,2600,2860
+TASK-114,Adicionar log auditoria aprovações,Feature,Ana,9,5,2024-12-16,2024-12-19,2024-12-18,,In Progress,TASK-057;TASK-065,2,Sim,Nao,20,24,Alta,3600,4320
+TASK-115,Corrigir filtro data relatório contábil,Bug,Carla,9,2,2024-12-13,2024-12-16,2024-12-16,2024-12-18,Done,TASK-043,1,Nao,Nao,8,10,Media,960,1200
+TASK-116,Documentação técnica final,Tech Debt,Carla,10,5,2024-12-27,2024-12-31,2024-12-28,,In Progress,,0,Nao,Nao,20,12,Media,2400,1440
+TASK-117,Script migração dados corrompidos,Feature,Diego,10,5,2024-12-28,2024-12-31,2024-12-30,,In Progress,TASK-074;TASK-066,2,Nao,Nao,20,10,Critica,2800,1400
+TASK-118,Configurar autoscaling produção,Infraestrutura,Bruno,10,3,2024-12-28,2024-12-30,2024-12-28,,In Progress,,0,Nao,Nao,12,6,Alta,1920,960
+TASK-119,Ajuste regra negócio multi-moeda,Feature,Ana,10,8,2024-12-27,2025-01-02,2024-12-30,,In Progress,TASK-073;TASK-065,3,Sim,Nao,32,18,Critica,5760,3240
+TASK-120,Revisão final segurança LGPD,Tech Debt,Elena,10,5,2025-01-02,2025-01-06,,,To Do,TASK-073;TASK-106,0,Nao,Nao,20,0,Critica,2600,0

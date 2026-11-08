@@ -1,0 +1,7 @@
+membro,papel,senioridade,especialidade,sprint_1_utilizacao_pct,sprint_2_utilizacao_pct,sprint_3_utilizacao_pct,sprint_4_utilizacao_pct,sprint_5_utilizacao_pct,sprint_6_utilizacao_pct,sprint_7_utilizacao_pct,sprint_8_utilizacao_pct,sprint_9_utilizacao_pct,sprint_10_utilizacao_pct,custo_hora
+Ana,Tech Lead,Senior,Integracoes e Arquitetura,75,85,90,95,100,115,120,130,128,125,180
+Bruno,Dev Backend,Senior,Infraestrutura e Backend,60,70,70,75,72,68,80,82,78,75,160
+Carla,Dev Frontend,Plena,Frontend e UX,65,70,72,68,78,80,82,85,80,78,120
+Diego,Analista de Dados,Pleno,Migracao e Banco de Dados,70,68,82,85,90,95,100,110,108,105,140
+Elena,QA,Plena,Testes e Qualidade,50,55,65,72,75,85,88,95,92,70,130
+Felipe,PM / Scrum Master,Senior,Gestao e Facilitacao,60,60,65,65,70,75,80,85,88,90,170
