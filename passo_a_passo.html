@@ -1,0 +1,531 @@
+<title>Roteiro do Artefato N2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: índice fixo de etapas à esquerda (desktop), coluna de leitura à direita; cada etapa é um cartão de sprint com prompt, checagem e resultado. */
+:root {
+  --bg: #f4f6f7;
+  --surface: #ffffff;
+  --ink: #17232a;
+  --muted: #5b6b73;
+  --line: #d6dee2;
+  --accent: #0d6e6e;
+  --accent-soft: #e2f0ef;
+  --warn: #a8540a;
+  --warn-soft: #fbefe2;
+  --good: #1f7a45;
+  --good-soft: #e3f3ea;
+  --code-bg: #eef2f4;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --step: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
+  --h1: clamp(2rem, 1.4rem + 2.6vw, 3.2rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1619; --surface: #162126; --ink: #e4ecef; --muted: #93a6ae; --line: #2a3a41;
+    --accent: #4cc3bd; --accent-soft: #173a3a; --warn: #f0a35b; --warn-soft: #3a2817;
+    --good: #6fd29a; --good-soft: #17352a; --code-bg: #1d2b31; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1619; --surface: #162126; --ink: #e4ecef; --muted: #93a6ae; --line: #2a3a41;
+  --accent: #4cc3bd; --accent-soft: #173a3a; --warn: #f0a35b; --warn-soft: #3a2817;
+  --good: #6fd29a; --good-soft: #17352a; --code-bg: #1d2b31; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 40px 64px; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; }
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 24px 48px; } }
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: var(--h1); line-height: 1.05; font-weight: 800; font-stretch: 112%; }
+h2 { font-size: var(--step); line-height: 1.2; font-weight: 700; font-stretch: 108%; }
+h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--muted); font-family: var(--font-body); }
+p { margin: 0; max-width: 68ch; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* índice */
+nav.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; display: flex; flex-direction: column; gap: 18px; }
+@media (max-width: 860px) { nav.index { position: static; } }
+.index .phase { display: flex; flex-direction: column; gap: 4px; }
+.index .phase-name { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+.index a { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 6px; align-items: baseline; text-decoration: none; color: var(--ink); font-size: 0.9rem; padding: 3px 6px; border-radius: 6px; }
+.index a:hover { background: var(--accent-soft); }
+.index a .n { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.index a.done .t { text-decoration: line-through; color: var(--muted); }
+.progress { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.progress-bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+.progress-bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+@media (max-width: 860px) {
+  .index .phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+}
+
+main { display: flex; flex-direction: column; gap: 40px; min-width: 0; }
+
+/* abertura */
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.04em; }
+.intro { display: flex; flex-direction: column; gap: 16px; }
+.lede { font-size: 1.08rem; color: var(--muted); }
+.path { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: stretch; margin-top: 8px; }
+@media (max-width: 640px) { .path { grid-template-columns: minmax(0, 1fr); } .path .arrow { transform: rotate(90deg); justify-self: center; } }
+.path .end { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.path .end.result { border-color: var(--accent); background: var(--accent-soft); }
+.path .arrow { align-self: center; font-family: var(--font-mono); color: var(--muted); font-size: 1.4rem; }
+.path ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 0.93rem; }
+
+.criteria { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 0.75rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: var(--surface); white-space: nowrap; }
+.chip.q { color: var(--accent); border-color: var(--accent); }
+.chip.ia { color: var(--warn); border-color: var(--warn); }
+.chip.d { color: var(--good); border-color: var(--good); }
+
+/* fases e etapas */
+.phase-head { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; border-top: 2px solid var(--ink); }
+.phase-head .tag { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.phase-body { display: flex; flex-direction: column; gap: 18px; }
+
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 20px; }
+@media (max-width: 520px) { .step { padding: 18px 16px; } }
+.step-top { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: start; }
+.step-num { font-family: var(--font-display); font-weight: 800; font-stretch: 125%; font-size: 1.9rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; min-width: 2ch; }
+.step-title { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.check { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--muted); cursor: pointer; white-space: nowrap; user-select: none; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+.step.done { border-color: var(--good); }
+.step.done .step-num { color: var(--good); }
+
+.why { color: var(--muted); }
+.block { display: flex; flex-direction: column; gap: 6px; }
+.prompt { position: relative; background: var(--code-bg); border-radius: 8px; padding: 14px 16px 14px 16px; font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+.copy { align-self: flex-start; font: 600 0.78rem var(--font-body); color: var(--accent); background: transparent; border: 1px solid var(--accent); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.copy:hover { background: var(--accent-soft); }
+.copy.ok { color: var(--good); border-color: var(--good); }
+.checklist { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.flag { background: var(--warn-soft); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 0.93rem; }
+.flag strong { color: var(--warn); }
+.outcome { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.metric { background: var(--good-soft); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; }
+.metric b { font-family: var(--font-display); font-stretch: 110%; font-size: 1.3rem; line-height: 1.15; color: var(--good); font-variant-numeric: tabular-nums; }
+.metric span { font-size: 0.82rem; color: var(--ink); }
+.files { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.files code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+
+.final { background: var(--ink); color: var(--bg); border-radius: 12px; padding: 26px 26px; display: flex; flex-direction: column; gap: 12px; }
+.final h2 { color: var(--bg); }
+.final p { color: var(--bg); opacity: 0.92; }
+.final .insight { font-family: var(--font-display); font-weight: 700; font-stretch: 105%; font-size: clamp(1.1rem, 1rem + 0.6vw, 1.4rem); line-height: 1.35; max-width: 60ch; }
+footer { font-size: 0.85rem; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <nav class="index" aria-label="Etapas">
+    <div>
+      <div class="progress" id="progress-text">0 de 12 etapas feitas</div>
+      <div class="progress-bar" aria-hidden="true"><span id="progress-bar"></span></div>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <span class="phase-name">A · Entender</span>
+        <a href="#etapa-1"><span class="n">01</span><span class="t">Ler guia e baremas</span></a>
+        <a href="#etapa-2"><span class="n">02</span><span class="t">Escrever as perguntas</span></a>
+      </div>
+      <div class="phase">
+        <span class="phase-name">B · Preparar os dados</span>
+        <a href="#etapa-3"><span class="n">03</span><span class="t">Auditar a qualidade</span></a>
+        <a href="#etapa-4"><span class="n">04</span><span class="t">Limpar com regras</span></a>
+      </div>
+      <div class="phase">
+        <span class="phase-name">C · Analisar e questionar</span>
+        <a href="#etapa-5"><span class="n">05</span><span class="t">Testar a sobrecarga</span></a>
+        <a href="#etapa-6"><span class="n">06</span><span class="t">Questionar o resultado</span></a>
+        <a href="#etapa-7"><span class="n">07</span><span class="t">Cruzar com as atas</span></a>
+        <a href="#etapa-8"><span class="n">08</span><span class="t">Testar os silos</span></a>
+        <a href="#etapa-9"><span class="n">09</span><span class="t">Prever o go-live</span></a>
+      </div>
+      <div class="phase">
+        <span class="phase-name">D · Concluir</span>
+        <a href="#etapa-10"><span class="n">10</span><span class="t">Escrever o insight</span></a>
+        <a href="#etapa-11"><span class="n">11</span><span class="t">Decidir e criticar</span></a>
+        <a href="#etapa-12"><span class="n">12</span><span class="t">Montar o relatório</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="intro">
+      <span class="eyebrow">Eletiva Project Management · Nível 2 · MBA em IA e Dados para Negócios</span>
+      <h1>Do cronograma atrasado à decisão do PM, em 12 etapas</h1>
+      <p class="lede">O roteiro que levou do mini-case ao relatório final: o que fazer em cada etapa, o prompt usado na IA, o que conferir antes de aceitar a resposta e o resultado obtido.</p>
+      <div class="path">
+        <div class="end">
+          <h3>O problema</h3>
+          <ul>
+            <li>Cronograma atrasado há 3 sprints.</li>
+            <li>O líder suspeita de sobrecarga, mas não tem dados.</li>
+            <li>Riscos de comunicação (silos) cresceram com o trabalho remoto.</li>
+          </ul>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="end result">
+          <h3>O resultado</h3>
+          <ul>
+            <li>Gargalo com nome: Ana e Diego, acima de 100%.</li>
+            <li>Nova data de go-live: 03/02/2025 (+4 semanas).</li>
+            <li>2 ações para a sprint 11, com dono, prazo e métrica.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria" aria-label="Critérios do barema">
+        <span class="chip q">Pergunta · 40%</span>
+        <span class="chip ia">Uso da IA · 30%</span>
+        <span class="chip d">Interpretação e decisão · 30%</span>
+      </div>
+      <p style="font-size:0.9rem;color:var(--muted)">Cada etapa mostra qual critério do barema ela atende. Marque as etapas concluídas para acompanhar o progresso; a marcação fica salva só neste navegador.</p>
+    </section>
+
+    <!-- FASE A -->
+    <section class="phase-body" aria-labelledby="fase-a">
+      <div class="phase-head"><span class="tag">Fase A</span><h2 id="fase-a">Entender o que será avaliado</h2></div>
+
+      <article class="step" id="etapa-1">
+        <div class="step-top">
+          <span class="step-num">01</span>
+          <div class="step-title"><h2>Ler o guia e os baremas antes dos dados</h2><div class="criteria"><span class="chip">Base para tudo</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-1" data-step="1"> Feita</label>
+        </div>
+        <p class="why">O guia pede quatro movimentos: pergunta, análise com IA, insight e decisão. O barema dá 40% do peso à pergunta. Ler isso primeiro evita uma análise bonita que não responde ao que é cobrado.</p>
+        <div class="block">
+          <h3>Confira</h3>
+          <ul class="checklist">
+            <li>Qual barema vale: o relatório (N2) ou os 3 slides (M2_PM)? Eles pedem entregas diferentes.</li>
+            <li>O que diferencia nota 9–10: pergunta não trivial, IA questionada, decisão concreta com trade-offs.</li>
+            <li>Prazo e formato de entrega (PDF ou DOCX, pasta do Drive via Adalove).</li>
+          </ul>
+        </div>
+        <div class="files">Arquivos: <code>[Inteli MBA] Guia Artefato N2.pdf</code><code>Barema N2.pdf</code><code>Barema_Eletivas_M2_PM.pdf</code></div>
+      </article>
+
+      <article class="step" id="etapa-2">
+        <div class="step-top">
+          <span class="step-num">02</span>
+          <div class="step-title"><h2>Escrever as perguntas antes de abrir os dados</h2><div class="criteria"><span class="chip q">Pergunta · 40%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-2" data-step="2"> Feita</label>
+        </div>
+        <p class="why">"O time está sobrecarregado?" tem resposta óbvia. A pergunta útil traz uma hipótese que pode ser refutada e muda a decisão: redistribuir resolve um problema espalhado, mas não um gargalo concentrado.</p>
+        <div class="block">
+          <h3>Perguntas usadas</h3>
+          <ul class="checklist">
+            <li><b>P1 · Sobrecarga:</b> a sobrecarga está espalhada ou concentrada nas pessoas de quem o go-live depende? Quanto da folga do resto do time alivia o gargalo?</li>
+            <li><b>P2 · Silos e reação:</b> quanto tempo passou entre o primeiro alerta nas atas e a reação do PM? Escopo vindo de fora explica impedimentos e retrabalho?</li>
+            <li><b>P3 · Previsão:</b> com 186 SP abertos e o ritmo recente, quando o go-live acontece de verdade?</li>
+          </ul>
+        </div>
+        <div class="flag"><strong>Teste rápido:</strong> para cada pergunta, escreva ao lado qual decisão do PM ela informa. Se não houver decisão, a pergunta ainda é descritiva demais.</div>
+      </article>
+    </section>
+
+    <!-- FASE B -->
+    <section class="phase-body" aria-labelledby="fase-b">
+      <div class="phase-head"><span class="tag">Fase B</span><h2 id="fase-b">Preparar os dados</h2></div>
+
+      <article class="step" id="etapa-3">
+        <div class="step-top">
+          <span class="step-num">03</span>
+          <div class="step-title"><h2>Auditar a qualidade dos 4 arquivos</h2><div class="criteria"><span class="chip ia">Uso da IA · 30%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-3" data-step="3"> Feita</label>
+        </div>
+        <p class="why">Antes de responder a qualquer pergunta, descubra em quais números dá para confiar. Aqui apareceu o achado que mais muda a leitura: as duas fontes de velocidade apontam direções opostas.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p3">Anexei 4 CSVs de um projeto (tarefas, time, backlog, atas). Descreva cada arquivo e liste problemas de qualidade: valores faltantes, linhas vazias, sprints sem ata, e números que não batem entre arquivos (ex.: velocity do backlog vs. story points concluídos nas tarefas). Liste as premissas que você precisa assumir.</div>
+          <button class="copy" type="button" data-copy="p3">Copiar prompt</button>
+        </div>
+        <div class="block">
+          <h3>Confira</h3>
+          <ul class="checklist">
+            <li>A velocity do backlog cai (28 → 20) enquanto os story points das tarefas sobem (32 → 91)?</li>
+            <li>A utilização do time bate com as horas das tarefas? (Não: Ana teria 17 h por dia útil.)</li>
+            <li>Quais sprints não têm ata (3, 7 e 10) e quais linhas estão vazias?</li>
+          </ul>
+        </div>
+        <div class="outcome">
+          <div class="metric"><b>2 fontes</b><span>de velocidade em direções opostas</span></div>
+          <div class="metric"><b>3 sprints</b><span>sem ata utilizável</span></div>
+          <div class="metric"><b>9 premissas</b><span>registradas e justificadas</span></div>
+        </div>
+        <div class="files">Saída: <code>Relatorio_Qualidade_Dados.pdf</code></div>
+      </article>
+
+      <article class="step" id="etapa-4">
+        <div class="step-top">
+          <span class="step-num">04</span>
+          <div class="step-title"><h2>Limpar os dados com regras documentadas</h2><div class="criteria"><span class="chip ia">Uso da IA · 30%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-4" data-step="4"> Feita</label>
+        </div>
+        <p class="why">Tire só o que não representa nada: colunas redundantes ou constantes, a ata vazia e datas de fim em tarefas que não terminaram. Guarde os dados brutos para mostrar o antes e depois.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p4">Limpe os dados dos 4 arquivos, retirando os que não representam nada, para ficarmos apenas com dados que contribuem para a avaliação. Documente cada regra aplicada e não preencha valores por estimativa.</div>
+          <button class="copy" type="button" data-copy="p4">Copiar prompt</button>
+        </div>
+        <div class="flag"><strong>Não aceite:</strong> preencher horas ou impedimentos em branco com zero ou com média. Campo em branco é informação desconhecida.</div>
+        <div class="files">Saída: <code>dataset_limpo/</code><code>LIMPEZA.md</code><code>scripts/limpar_dados.py</code></div>
+      </article>
+    </section>
+
+    <!-- FASE C -->
+    <section class="phase-body" aria-labelledby="fase-c">
+      <div class="phase-head"><span class="tag">Fase C</span><h2 id="fase-c">Analisar e questionar a IA</h2></div>
+
+      <article class="step" id="etapa-5">
+        <div class="step-top">
+          <span class="step-num">05</span>
+          <div class="step-title"><h2>Testar a hipótese de sobrecarga</h2><div class="criteria"><span class="chip q">Pergunta</span><span class="chip ia">Uso da IA</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-5" data-step="5"> Feita</label>
+        </div>
+        <p class="why">Meça a carga por pessoa e quem segura o trabalho que trava a entrega. A combinação das duas coisas é o que transforma "sobrecarga" em gargalo com nome.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p5">Hipótese: a sobrecarga não é do time, é de 2 pessoas que estão no caminho crítico. Use dataset_time (utilização por sprint) e monte um heatmap pessoa × sprint. Depois, com dataset_tarefas, conte quantas tarefas abertas dependem de cada pessoa (coluna dependencias). A hipótese se confirma? Mostre o cálculo.</div>
+          <button class="copy" type="button" data-copy="p5">Copiar prompt</button>
+        </div>
+        <div class="outcome">
+          <div class="metric"><b>Ana 123%</b><span>média das sprints 6–9</span></div>
+          <div class="metric"><b>Diego 103%</b><span>média das sprints 6–9</span></div>
+          <div class="metric"><b>78%</b><span>das dependências abertas esperam por eles</span></div>
+        </div>
+        <div class="files">Saída: <code>analise_sobrecarga.png</code><code>scripts/analise_sobrecarga.py</code></div>
+      </article>
+
+      <article class="step" id="etapa-6">
+        <div class="step-top">
+          <span class="step-num">06</span>
+          <div class="step-title"><h2>Questionar o resultado</h2><div class="criteria"><span class="chip ia">Uso da IA · 30%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-6" data-step="6"> Feita</label>
+        </div>
+        <p class="why">É aqui que se ganha a nota máxima em uso da IA. A primeira resposta confirmou a hipótese e calculou 62 h de folga; a revisão mostrou que a folga real era de 18 h.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p6">Revise: (a) a utilização do dataset_time bate com as horas gastas nas tarefas? Se não, qual fonte é mais confiável e por quê? (b) Felipe não tem tarefas — a carga dele é real? (c) a sprint 10 está em andamento — isso distorce algo? Refaça o necessário e diga o que mudou.</div>
+          <button class="copy" type="button" data-copy="p6">Copiar prompt</button>
+        </div>
+        <div class="flag"><strong>O que mudou:</strong> a Elena parecia livre (70% na sprint 10), mas tem 84 h de testes presas atrás de Ana e Diego. A folga caiu de 62 h para 18 h, só do Bruno, e a Elena virou o próximo gargalo.</div>
+        <div class="outcome">
+          <div class="metric"><b>r = 0,87</b><span>as fontes concordam em quem está mais carregado</span></div>
+          <div class="metric"><b>62 → 18 h</b><span>folga real por sprint</span></div>
+        </div>
+      </article>
+
+      <article class="step" id="etapa-7">
+        <div class="step-top">
+          <span class="step-num">07</span>
+          <div class="step-title"><h2>Cruzar os números com as atas</h2><div class="criteria"><span class="chip q">Pergunta</span><span class="chip d">Decisão</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-7" data-step="7"> Feita</label>
+        </div>
+        <p class="why">Os números mostram quando o problema apareceu; as atas mostram quem avisou e o que o PM fez. A distância entre as duas coisas é o achado de governança.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p7">Para cada sprint, cruze os números (utilização, impedimentos, retrabalho, mudanças de escopo) com o que as atas dizem. Monte uma tabela: sprint | sinal nos dados | sinal na ata | quem falou | o PM reagiu? Quanto tempo levou do primeiro alerta à reação?</div>
+          <button class="copy" type="button" data-copy="p7">Copiar prompt</button>
+        </div>
+        <div class="block">
+          <h3>Confira</h3>
+          <ul class="checklist">
+            <li>Defina o que conta como reação concreta: ação, dono e prazo.</li>
+            <li>Sprint sem ata não prova que o PM não agiu: escreva "sem registro de reação".</li>
+          </ul>
+        </div>
+        <div class="outcome">
+          <div class="metric"><b>77 dias</b><span>do primeiro alerta à primeira decisão</span></div>
+          <div class="metric"><b>14 → 29</b><span>impedimentos enquanto o PM não reagia</span></div>
+        </div>
+      </article>
+
+      <article class="step" id="etapa-8">
+        <div class="step-top">
+          <span class="step-num">08</span>
+          <div class="step-title"><h2>Testar os sinais de silo</h2><div class="criteria"><span class="chip ia">Uso da IA · 30%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-8" data-step="8"> Feita</label>
+        </div>
+        <p class="why">Com só 9 sprints, qualquer coisa que cresce com o tempo parece correlacionada. Teste controlando o tamanho da sprint e repita tarefa a tarefa.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p8">Analise sinais de silo: participação nas reuniões, sprints sem ata, dependências entre pessoas diferentes por sprint, e mudanças de escopo que chegaram fora do processo. Há correlação com impedimentos e retrabalho? Com 10 sprints, a correlação é confiável?</div>
+          <button class="copy" type="button" data-copy="p8">Copiar prompt</button>
+        </div>
+        <div class="flag"><strong>A IA errou aqui:</strong> r = 0,97 parecia provar que silos causam impedimentos. O tamanho da sprint sozinho explica r = 0,96. Tarefa a tarefa, só uma relação sobrevive: escopo alterado gera mais impedimentos.</div>
+        <div class="outcome">
+          <div class="metric"><b>+45%</b><span>impedimentos em tarefas com mudança de escopo (p = 0,015)</span></div>
+          <div class="metric"><b>11 de 27</b><span>mudanças de escopo caíram na Ana</span></div>
+        </div>
+        <div class="files">Saída: <code>analise_silos.png</code><code>scripts/analise_silos.py</code></div>
+      </article>
+
+      <article class="step" id="etapa-9">
+        <div class="step-top">
+          <span class="step-num">09</span>
+          <div class="step-title"><h2>Prever a data de go-live</h2><div class="criteria"><span class="chip d">Decisão · 30%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-9" data-step="9"> Feita</label>
+        </div>
+        <p class="why">Transforme o diagnóstico em data. Use as duas fontes, explique por que divergem e teste cada opção que o PM levou ao sponsor.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p9">Projete a data de go-live: use os story points abertos (sprints 9–10) e a velocidade recente. Calcule com as duas fontes (backlog e tarefas) e explique por que dão resultados diferentes. Dê 3 cenários e o schedule drift. Compare com as opções que o PM levou ao sponsor (cortar escopo, +2 ou +4 semanas).</div>
+          <button class="copy" type="button" data-copy="p9">Copiar prompt</button>
+        </div>
+        <div class="flag"><strong>Não aceite:</strong> dividir story points pela velocity do backlog. São unidades diferentes, e a conta daria 20/04/2025.</div>
+        <div class="outcome">
+          <div class="metric"><b>03/02/2025</b><span>cenário realista (+28 dias)</span></div>
+          <div class="metric"><b>28/01 a 29/03</b><span>faixa entre otimista e pessimista</span></div>
+          <div class="metric"><b>67%</b><span>de corte para manter 06/01: inviável</span></div>
+        </div>
+        <div class="files">Saída: <code>previsao_golive.png</code><code>scripts/previsao_golive.py</code></div>
+      </article>
+    </section>
+
+    <!-- FASE D -->
+    <section class="phase-body" aria-labelledby="fase-d">
+      <div class="phase-head"><span class="tag">Fase D</span><h2 id="fase-d">Concluir e entregar</h2></div>
+
+      <article class="step" id="etapa-10">
+        <div class="step-top">
+          <span class="step-num">10</span>
+          <div class="step-title"><h2>Escrever o insight em uma frase</h2><div class="criteria"><span class="chip d">Decisão · 30%</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-10" data-step="10"> Feita</label>
+        </div>
+        <p class="why">Se não cabe em uma frase com o número principal, o insight ainda não está pronto. Peça alternativas e escolha a que leva direto a uma ação.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p10">Resuma em UM insight de uma frase, com o número principal. Dê 2 alternativas e diga qual é mais acionável.</div>
+          <button class="copy" type="button" data-copy="p10">Copiar prompt</button>
+        </div>
+        <div class="block">
+          <h3>Critério de escolha</h3>
+          <ul class="checklist">
+            <li>Diz o que fazer na próxima sprint?</li>
+            <li>Diz quem e quanto?</li>
+            <li>Tem impacto direto na data?</li>
+          </ul>
+        </div>
+        <div class="files">Saída: <code>Insight_Principal.pdf</code></div>
+      </article>
+
+      <article class="step" id="etapa-11">
+        <div class="step-top">
+          <span class="step-num">11</span>
+          <div class="step-title"><h2>Decidir as 2 ações e criticá-las</h2><div class="criteria"><span class="chip d">Decisão · 30%</span><span class="chip ia">Uso da IA</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-11" data-step="11"> Feita</label>
+        </div>
+        <p class="why">Cada ação precisa de o quê, quem, prazo, métrica, trade-off e risco. Depois, peça à IA que ataque as próprias propostas: é isso que mostra clareza sobre o impacto da decisão.</p>
+        <div class="block">
+          <h3>Prompt</h3>
+          <div class="prompt" id="p11">Como PM, proponha 2 ações para a próxima sprint, cada uma com: o quê, quem, prazo, métrica de sucesso, trade-off e risco. Use a folga do Bruno, da Carla e da Elena. Depois critique suas próprias propostas.</div>
+          <button class="copy" type="button" data-copy="p11">Copiar prompt</button>
+        </div>
+        <div class="flag"><strong>Corrija a premissa:</strong> o prompt pede para usar a folga de três pessoas, mas só o Bruno tem folga. A da Carla precisa ser criada adiando tarefas; a Elena precisa ser protegida.</div>
+        <div class="outcome">
+          <div class="metric"><b>Ação 1</b><span>liberar o caminho crítico: Ana e Diego só no que leva ao go-live</span></div>
+          <div class="metric"><b>Ação 2</b><span>porta única de escopo com gatilho de escalada em 48 h</span></div>
+          <div class="metric"><b>13/01</b><span>ponto de revisão, com o cenário de março pronto</span></div>
+        </div>
+        <div class="files">Saída: <code>Acoes_Proxima_Sprint.pdf</code></div>
+      </article>
+
+      <article class="step" id="etapa-12">
+        <div class="step-top">
+          <span class="step-num">12</span>
+          <div class="step-title"><h2>Montar o relatório e publicar as evidências</h2><div class="criteria"><span class="chip q">Pergunta</span><span class="chip ia">IA</span><span class="chip d">Decisão</span></div></div>
+          <label class="check"><input type="checkbox" id="chk-12" data-step="12"> Feita</label>
+        </div>
+        <p class="why">Organize pelos quatro movimentos do guia e mostre o rastro: cada prompt, o que a IA encontrou e o que você corrigiu. Colar gráfico sem interpretação não conta como análise.</p>
+        <div class="block">
+          <h3>Estrutura usada</h3>
+          <ul class="checklist">
+            <li>Resumo executivo · Contexto e dados · Perguntas</li>
+            <li>Análise com IA: tabela de prompts e quadro "onde a IA errou"</li>
+            <li>Resultados com as 3 figuras interpretadas · Insight · Decisão · Limitações</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Antes de entregar</h3>
+          <ul class="checklist">
+            <li>Inclua as "reflexões dos blocos" que o barema cita.</li>
+            <li>Decida se o repositório com as evidências fica público ou privado.</li>
+            <li>Confirme o prazo no Adalove.</li>
+          </ul>
+        </div>
+        <div class="files">Saída: <code>Relatorio_Final_PM_N2.pdf</code><code>github.com/Markabdo87/artefato2</code></div>
+      </article>
+    </section>
+
+    <section class="final" aria-labelledby="chegada">
+      <h2 id="chegada">Onde o roteiro chega</h2>
+      <p class="insight">O go-live atrasa cerca de 4 semanas (de 06/01 para 03/02) porque 78% do que trava a entrega está com as duas únicas pessoas acima de 100% de utilização, e o resto do time só tem 18 horas de folga por sprint para ajudar.</p>
+      <p>Decisão: na sprint 11, liberar o caminho crítico e criar uma porta única de escopo, com revisão em 13/01.</p>
+    </section>
+
+    <footer>Fonte dos números: dataset_limpo/ (tarefas, time, backlog e atas) e os scripts em scripts/. Projeto de migração de ERP para AWS, sprints 1 a 10 (set/2024 a jan/2025).</footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var TOTAL = 12, KEY = "roteiro-n2-feitas";
+  var saved = [];
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { saved = []; }
+
+  function update() {
+    var done = 0, list = [];
+    for (var i = 1; i <= TOTAL; i++) {
+      var box = document.getElementById("chk-" + i);
+      var on = box && box.checked;
+      if (on) { done++; list.push(i); }
+      var step = document.getElementById("etapa-" + i);
+      if (step) step.classList.toggle("done", !!on);
+      var link = document.querySelector('.index a[href="#etapa-' + i + '"]');
+      if (link) link.classList.toggle("done", !!on);
+    }
+    document.getElementById("progress-text").textContent = done + " de " + TOTAL + " etapas feitas";
+    document.getElementById("progress-bar").style.width = (done / TOTAL * 100) + "%";
+    try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+  }
+
+  for (var i = 1; i <= TOTAL; i++) {
+    var box = document.getElementById("chk-" + i);
+    if (!box) continue;
+    if (saved.indexOf(i) !== -1) box.checked = true;
+    box.addEventListener("change", update);
+  }
+  update();
+
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.getAttribute("data-copy"));
+      var text = el ? el.textContent : "";
+      function ok() { btn.textContent = "Copiado"; btn.classList.add("ok"); setTimeout(function () { btn.textContent = "Copiar prompt"; btn.classList.remove("ok"); }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = "Texto selecionado: use Ctrl+C";
+      }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback);
+        else fallback();
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
